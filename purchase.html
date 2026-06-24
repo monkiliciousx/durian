@@ -910,9 +910,10 @@
           </div>
         </a>
 
-        <a class="back-link" href="index.html">
-          ← <span>Back to website</span>
-        </a>
+        <div style="display:flex;align-items:center;gap:16px;">
+          <a class="back-link" href="coverage.html"><span>Plan Details</span></a>
+          <a class="back-link" href="index.html">← <span>Back to website</span></a>
+        </div>
       </div>
     </div>
   </header>
@@ -956,8 +957,8 @@
     </section>
 
     <div class="container demo-banner">
-      Demo version: this page validates and previews the form, but it does not
-      transmit, upload or save personal information yet.
+      Supplier review version: this page validates and previews the form, but it does not
+      transmit, upload or save personal information yet. Final terms must be confirmed before launch.
     </div>
 
     <div class="container purchase-layout">
@@ -1042,7 +1043,7 @@
                 <div class="field">
                   <label for="purchaseDate">Phone purchase date <span class="required">*</span></label>
                   <input id="purchaseDate" name="purchaseDate" type="date" required>
-                  <div class="hint">The phone must be registered within the permitted activation period.</div>
+                  <div class="hint">Based on the supplied terms, the phone and plan must be activated within 30 days of purchase.</div>
                 </div>
 
                 <div class="field">
@@ -1057,17 +1058,10 @@
                     <option value="">Select brand</option>
                     <option>Apple</option>
                     <option>Samsung</option>
-                    <option>Xiaomi</option>
-                    <option>Redmi</option>
-                    <option>HONOR</option>
                     <option>Huawei</option>
                     <option>OPPO</option>
+                    <option>Xiaomi</option>
                     <option>vivo</option>
-                    <option>realme</option>
-                    <option>Google</option>
-                    <option>OnePlus</option>
-                    <option>Nothing</option>
-                    <option>Other</option>
                   </select>
                 </div>
 
@@ -1183,8 +1177,13 @@
                 </label>
 
                 <label class="check-row">
+                  <input id="eligibilityConsent" type="checkbox" required>
+                  <span>I confirm that I am at least 18 years old, reside in Malaysia, and the phone is for personal or domestic use.</span>
+                </label>
+
+                <label class="check-row">
                   <input id="termsConsent" type="checkbox" required>
-                  <span>I agree to the applicable product terms, privacy notice and document verification process.</span>
+                  <span>I have reviewed the <a href="coverage.html" target="_blank" style="color:var(--blue);font-weight:900;">Plan Coverage & Exclusions</a> and agree to the applicable terms, privacy notice and document verification process.</span>
                 </label>
               </div>
             </section>
@@ -1222,9 +1221,9 @@
 
           <div class="summary-body">
             <ul class="summary-list">
-              <li>365 days of protection</li>
+              <li>Coverage ends in the 12th month from phone purchase</li>
               <li>Online claim submission</li>
-              <li>Pickup and return coordination</li>
+              <li>Pickup and return coordination in Western Malaysia</li>
               <li>Activation subject to eligibility</li>
             </ul>
 
@@ -1551,6 +1550,7 @@
       event.preventDefault();
 
       if (!document.getElementById("accuracyConsent").checked ||
+          !document.getElementById("eligibilityConsent").checked ||
           !document.getElementById("termsConsent").checked) {
         alert("Please confirm both declarations before proceeding.");
         return;
